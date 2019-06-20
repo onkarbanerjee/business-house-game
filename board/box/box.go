@@ -20,8 +20,8 @@ var Typs = map[string]typ{
 // In our current board game though, box can either be either of two ofcourse
 type Box struct {
 	typ
-	ownable
-	deductible
+	Ownable
+	Deductible
 }
 
 func New(boxTyp typ) *Box {
@@ -30,10 +30,10 @@ func New(boxTyp typ) *Box {
 	}
 }
 
-func (b *Box) SetDeductible(deductible deductible) {
-	b.deductible = deductible
+func (b *Box) SetDeductible(deductible Deductible) {
+	b.Deductible = deductible
 }
 
-func (b *Box) SetOwnable(ownable ownable) {
-	b.ownable = ownable
+func (b *Box) SetOwnable(ownable Ownable) {
+	b.Ownable = ownable
 }

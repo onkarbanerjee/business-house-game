@@ -7,20 +7,20 @@ import (
 	"github.com/pkg/errors"
 )
 
-// board is the main entity on which all the boxes are laid out and players make their moves
-type board struct {
+// Board is the main entity on which all the boxes are laid out and players make their moves
+type Board struct {
 	name  string
-	boxes []*box.Box
+	Boxes []*box.Box
 }
 
-// New takes in a layout and parses it to get appropriate boxes in the board
-func New(name string, layout []string) (*board, error) {
+// New takes in a layout and parses it to get appropriate boxes in the Board
+func New(name string, layout []string) (*Board, error) {
 	boxes, err := parse(layout)
 	if err != nil {
 		return nil, errors.Wrap(err, "Error in parsing the layout")
 	}
-	return &board{
-		name: name, boxes: boxes,
+	return &Board{
+		name: name, Boxes: boxes,
 	}, nil
 }
 

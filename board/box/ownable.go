@@ -1,9 +1,10 @@
 package box
 
-import "fmt"
-
-type ownable interface {
-	ownBy(playerId int) error
+type Ownable interface {
+	ID() int
+	Price() int
+	IsOwned() bool
+	OwnBy(playerId int)
 }
 
 type hotel struct {
@@ -17,10 +18,17 @@ func NewHotel(name string, id, cost int) *hotel {
 	return &hotel{name: name, id: id, cost: cost}
 }
 
-func (h *hotel) ownBy(playerId int) error {
-	if h.owner == 0 {
-		return fmt.Errorf("Hotel %s is owned by player id %d", h.name, h.owner)
-	}
+func (h *hotel) ID() int {
+	return h.id
+}
+func (h *hotel) Price() int {
+	return h.cost
+}
+
+func (h *hotel) IsOwned() bool {
+	return h.owner == 0
+}
+
+func (h *hotel) OwnBy(playerId int) {
 	h.owner = playerId
-	return nil
 }

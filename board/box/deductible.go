@@ -1,7 +1,7 @@
 package box
 
-type deductible interface {
-	deduct(balance int) int
+type Deductible interface {
+	Deduct(balance int) int
 }
 
 type jail struct {
@@ -19,7 +19,7 @@ func NewJail(name string, amountToBeDeducted int) *jail {
 }
 
 // jail is a deductible which deducts amountToBeDeducted
-func (j *jail) deduct(balance int) int {
+func (j *jail) Deduct(balance int) int {
 	return balance - j.amountToBeDeducted
 }
 
@@ -28,6 +28,6 @@ func NewTreasure(name string, amountToBeAdded int) *treasure {
 }
 
 // treasure is a deductible that actually adds the amountToBeAdded
-func (t *treasure) deduct(balance int) int {
+func (t *treasure) Deduct(balance int) int {
 	return balance + t.amountToBeAdded
 }
