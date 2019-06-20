@@ -1,6 +1,6 @@
-## Business House Board Game
+# Business House Board Game
 
-# Problem statement
+## Problem statement
 
 Business House is a board game, popularly known as Monopoly as well. In this problem at hand we are going to simluate the same but with minimal features, all of which are described below:
 
@@ -15,14 +15,14 @@ Each player is positioned at the starting box on the game board, with an initial
 At the end of 10 rounds of throwing the dice, the player with the highest balance is winner, so display the players with their balance in decresiing order of balance.
 
 
-# Input 
+## Input 
 
 Number of players -> for example 2.
 Dice throws -> [2,12,3,5,10,6,11,4,2,5,3,9,8,4,6,10,4,5,12,10]
 Board layout -> [E,E,H,H,E,T,H,E,H,H,E,E,E,J,T,E,H]
 
 
-# Output
+## Output
 
 Player 1 - 1200
 Player 2 - 800
