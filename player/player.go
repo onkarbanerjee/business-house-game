@@ -1,6 +1,9 @@
 package player
 
-import "errors"
+import (
+	"errors"
+	"fmt"
+)
 
 var errInsufficientBalance = errors.New("Insufficient balance")
 
@@ -26,11 +29,16 @@ func (p *Player) SetBalance(newBal int) {
 func (p *Player) CurrentPosition() int {
 	return p.currentPosition
 }
-func (p *Player) AcquireAsset(assetID int) {
+func (p *Player) AcquireAsset(assetID, cost int) {
 	p.assetsOwned = append(p.assetsOwned, assetID)
+	p.currentBalance -= cost
 	return
 }
 
 func (p *Player) UpdatePosition(newPos int) {
 	p.currentPosition = newPos
+}
+
+func (p *Player) String() string {
+	return fmt.Sprintf("Player id : %d is at %d with Balance %d and owns assets id %v", p.Id, p.currentPosition, p.currentBalance, p.assetsOwned)
 }

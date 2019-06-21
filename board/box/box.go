@@ -1,5 +1,7 @@
 package box
 
+import "fmt"
+
 type typ int
 
 const (
@@ -36,4 +38,8 @@ func (b *Box) SetDeductible(deductible Deductible) {
 
 func (b *Box) SetOwnable(ownable Ownable) {
 	b.Ownable = ownable
+}
+
+func (b *Box) String() string {
+	return fmt.Sprintf("Box is %d, is deductible? %t, is ownable? %t", b.typ, b.Deductible != nil, b.Ownable != nil)
 }

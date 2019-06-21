@@ -15,7 +15,7 @@ type hotel struct {
 }
 
 func NewHotel(name string, id, cost int) *hotel {
-	return &hotel{name: name, id: id, cost: cost}
+	return &hotel{name: name, id: id, cost: cost, owner: -1}
 }
 
 func (h *hotel) ID() int {
@@ -26,7 +26,7 @@ func (h *hotel) Price() int {
 }
 
 func (h *hotel) IsOwned() bool {
-	return h.owner == 0
+	return h.owner != -1
 }
 
 func (h *hotel) OwnBy(playerId int) {

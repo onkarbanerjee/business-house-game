@@ -27,7 +27,7 @@ func New(name string, layout []string) (*Board, error) {
 // TODO: move validation out, refactor all the hard coded values
 func parse(layout []string) ([]*box.Box, error) {
 	ret := []*box.Box{}
-
+	var hotelId int
 	for _, each := range layout {
 		typ, ok := box.Typs[each]
 		if !ok {
@@ -42,7 +42,8 @@ func parse(layout []string) ([]*box.Box, error) {
 			deductible := box.NewTreasure("Mosby's Treasure", 200)
 			eachBox.SetDeductible(deductible)
 		case box.HotelTyp:
-			ownable := box.NewHotel("Hotel Airport Link", 1, 150)
+			hotelId++
+			ownable := box.NewHotel("Hotel Airport Link", hotelId, 150)
 			eachBox.SetOwnable(ownable)
 		}
 
