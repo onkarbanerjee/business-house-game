@@ -14,6 +14,8 @@ type Player struct {
 	assetsOwned []int
 }
 
+type ByBalance []*Player
+
 func New(id, currentBalance int) *Player {
 	return &Player{Id: id, currentPosition: -1, currentBalance: currentBalance}
 }
@@ -41,4 +43,16 @@ func (p *Player) UpdatePosition(newPos int) {
 
 func (p *Player) String() string {
 	return fmt.Sprintf("Player id : %d is at %d with Balance %d and owns assets id %v", p.Id, p.currentPosition, p.currentBalance, p.assetsOwned)
+}
+
+func (b ByBalance) Len() int {
+	return len(b)
+}
+
+func (b ByBalance) Less(i, j int) bool {
+	return b[i].currentBalance < b[j].currentBalance
+}
+
+func (b ByBalance) Swap(i, j int) {
+	b[i], b[j] = b[j], b[i]
 }

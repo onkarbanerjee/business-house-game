@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"log"
+	"sort"
 
 	"github.com/onkarbanerjee/business-house-game/board"
 	"github.com/onkarbanerjee/business-house-game/player"
@@ -28,7 +29,7 @@ func move(board *board.Board, p *player.Player, diceValue int) {
 }
 
 func main() {
-	layout := []string{"E", "E", "J", "E", "H", "T", "H", "E", "E", "H", "E"}
+	layout := []string{"E", "E", "J", "E", "H", "T", "H", "E", "E", "T", "H", "E"}
 
 	board, err := board.New("Business House Game", layout)
 	if err != nil {
@@ -54,7 +55,9 @@ func main() {
 		move(board, players[turn], diceValue)
 	}
 
-	for _, each := range players {
+	byBalance := player.ByBalance(players)
+	sort.Stable(sort.Reverse(byBalance))
+	for _, each := range byBalance {
 		fmt.Println(each)
 	}
 }
